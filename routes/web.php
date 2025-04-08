@@ -54,24 +54,27 @@ $tasks = [
   ),
 ];
 
-Route::get('/', function () use ($tasks)  {
+Route::get('/', function () use ($tasks) {
     return view('index', [
-        'task'=> $tasks,
+        'tasks' => $tasks,
     ]);
-}) -> name ('$tasks');
+})->name('tasks.index');
 
+Route::get('/{id}', function ($id) {
+    return 'one single task';
+})->name('tasks.show');
 
-Route::get('hello', function () {
-    return 'hi';
-});
+//Route::get('hello', function () {
+//    return 'hi';
+//});
 
-Route::get('/hallo', function () {
-    return redirect('hello');
-});
+//Route::get('/hallo', function () {
+ //   return redirect('hello');
+//});
 
-Route::get('/greet/{name}', function ($name) {
-    return 'hi' .$name . '!' ;
-});
+//Route::get('/greet/{name}', function ($name) {
+ //   return 'hi' .$name . '!' ;
+//});
 
 //Get
 //Post
