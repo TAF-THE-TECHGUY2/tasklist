@@ -67,7 +67,7 @@ Route::get('/task', function () use($tasks) {
     ]);
     })->name('tasks.index');
 
-Route::get('/task/{id}', function ($id) use ($tasks) {
+Route::get('/tasks/{id}', function ($id) use ($tasks) {
     $task = collect($tasks)->firstWhere('id',$id);
 
         if (!$task){
@@ -76,12 +76,12 @@ Route::get('/task/{id}', function ($id) use ($tasks) {
 
     return view('show', ['task' => $task]);
 
-})->name('task.show');
-
-
-Route::get('/{id}', function ($id) {
-    return 'one single task';
 })->name('tasks.show');
+
+
+//Route::get('/{id}', function ($id) {
+ //   return 'one single task';
+//})->name('tasks.show');
 
 //Route::get('hello', function () {
 //    return 'hi';
