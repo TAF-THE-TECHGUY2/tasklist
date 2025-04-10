@@ -1,6 +1,7 @@
 
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
@@ -63,16 +64,20 @@ Route::get('/', function ()  {
 
 Route::get('/task', function ()  {
     return view ('index' , [
-        'tasks'=>\App\Models\Task::latest()->where('True')->get()
+        'tasks'=>\App\Models\Task::latest()->get()
     ]);
     })->name('tasks.index');
 
-Route::get('/tasks/{id}', function ($id) use ($tasks) {
+Route::view('/tasks/create', 'create')
+    ->name('tasks.create');
 
-
-    return view('show', ['task' =>\App\Models\Task::findOrFail($id)]);
-
+Route::get('/tasks/{id}', function ($id)  {
+return view('show', ['task' =>\App\Models\Task::findOrFail($id)]);
 })->name('tasks.show');
+
+Route::post('/tasks', function (Request $request)  {
+dd($request->all());
+})->name('tasks.store');
 
 
 //Route::get('/{id}', function ($id) {
