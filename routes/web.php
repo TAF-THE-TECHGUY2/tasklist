@@ -84,6 +84,7 @@ Route::get('/tasks/{task}', function (Task $task) {
     ]);
 })->name('tasks.show');
 
+
 Route::post('/tasks', function (TaskRequest $request)  {
 
     //$data = $request->validated();

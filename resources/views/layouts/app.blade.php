@@ -30,7 +30,7 @@
             @apply text-red-500 text-sm;
         }
     </style>
-    {{-- blade-formatter-enable --}}
+
 
     @yield('styles')
 </head>
